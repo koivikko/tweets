@@ -12,17 +12,9 @@ import Foundation
 struct Account {
     
     let username : String
+    let uuid: UUID
     
 }
-
-enum AccountLoginStatus: Int {
-    case LoginStarted
-    case InvalidPassword
-    case InvalidUsername
-    case LoginFailed
-}
-
-
 
 class AccountManager {
 
@@ -37,8 +29,17 @@ class AccountManager {
         return nil
     }
     
-    func login(username: String, password: String) -> (AccountLoginStatus, NSError)  {
-        return (AccountLoginStatus.LoginFailed, NSError(domain: AccountManager.accountManagerLoginErrorDomain, code: AccountLoginStatus.LoginFailed.rawValue, userInfo: nil))
+    func login(username: String, password: String, onComplete: @escaping (_ loginStatus: RequestStatus, _ error: NSError?) -> Void) {
+        let restApi = TweetRESTApi.sharedInstance
+        restApi.loginWith(username: username, password: password) {loginStatus, error in
+            if loginStatus == RequestStatus.success {
+                // Store the account
+            } else {
+                // Erase the password
+            }
+            // send the status upstream
+            onComplete(loginStatus, error)
+        }
     }
     
     func logout(account: Account) {

@@ -24,6 +24,9 @@
 		125E83BC21A3346600C28B26 /* KeyChainAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83BB21A3346600C28B26 /* KeyChainAccess.swift */; };
 		125E83BD21A3346600C28B26 /* KeyChainAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83BB21A3346600C28B26 /* KeyChainAccess.swift */; };
 		125E83BE21A3346600C28B26 /* KeyChainAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83BB21A3346600C28B26 /* KeyChainAccess.swift */; };
+		125E83C021A4418900C28B26 /* TweetRESTApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83BF21A4418900C28B26 /* TweetRESTApi.swift */; };
+		125E83C121A4418900C28B26 /* TweetRESTApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83BF21A4418900C28B26 /* TweetRESTApi.swift */; };
+		125E83C221A4418900C28B26 /* TweetRESTApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83BF21A4418900C28B26 /* TweetRESTApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,7 @@
 		125E83B421A333B600C28B26 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		125E83B721A3344300C28B26 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		125E83BB21A3346600C28B26 /* KeyChainAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainAccess.swift; sourceTree = "<group>"; };
+		125E83BF21A4418900C28B26 /* TweetRESTApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetRESTApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,7 @@
 		125E83AC21A32B1800C28B26 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				125E83BF21A4418900C28B26 /* TweetRESTApi.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 				125E837F21A32AC400C28B26 /* ViewController.swift in Sources */,
 				125E837D21A32AC400C28B26 /* AppDelegate.swift in Sources */,
 				125E83B821A3344300C28B26 /* AccountManager.swift in Sources */,
+				125E83C021A4418900C28B26 /* TweetRESTApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				125E83BD21A3346600C28B26 /* KeyChainAccess.swift in Sources */,
+				125E83C121A4418900C28B26 /* TweetRESTApi.swift in Sources */,
 				125E839221A32AC900C28B26 /* TwitterAppTests.swift in Sources */,
 				125E83B921A3344300C28B26 /* AccountManager.swift in Sources */,
 			);
@@ -331,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				125E83B321A32B7D00C28B26 /* LoginViewController.swift in Sources */,
+				125E83C221A4418900C28B26 /* TweetRESTApi.swift in Sources */,
 				125E83BE21A3346600C28B26 /* KeyChainAccess.swift in Sources */,
 				125E839D21A32AC900C28B26 /* TwitterAppUITests.swift in Sources */,
 				125E83BA21A3344300C28B26 /* AccountManager.swift in Sources */,

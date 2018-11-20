@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="TwitterApp" customModuleProvider="target">
             <connections>
+                <outlet property="passwordField" destination="4Jb-lb-iaV" id="Mxn-bp-25V"/>
                 <outlet property="usernameField" destination="8vj-xr-Bf1" id="9g0-0d-tFv"/>
                 <outlet property="view" destination="2uO-Bs-fIK" id="6Du-sk-v39"/>
             </connections>
@@ -63,6 +64,10 @@
                         <constraint firstAttribute="width" constant="100" id="60Y-No-qeF"/>
                     </constraints>
                     <state key="normal" title="Login"/>
+                    <connections>
+                        <action selector="loginTapped:" destination="-1" eventType="touchUpOutside" id="ekB-v9-QiP"/>
+                        <action selector="loginTapped:" destination="-1" eventType="touchUpInside" id="yJ0-Hv-RFd"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BfJ-1h-9sE" userLabel="Log in Label">
                     <rect key="frame" x="157" y="124" width="61" height="28"/>

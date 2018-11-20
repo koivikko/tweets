@@ -8,3 +8,17 @@
 
 import Foundation
 
+class KeyChainAccess {
+    
+    func saveKey(key: String, value: String) {
+        
+    }
+    
+    func readKey(key: String, value: String) {
+        
+    }
+    
+    func deleteKey(key: String) {
+        
+    }
+}
