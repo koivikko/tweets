@@ -44,7 +44,7 @@ class LoginOperation: Operation {
         }
         
         // Add some random latency
-        let randomLatency = Int.random(in: 0 ..< 3)
+        let randomLatency = Int.random(in: 1 ..< 3)
         Thread.sleep(forTimeInterval: TimeInterval(randomLatency))
         
         if isCancelled {
@@ -52,6 +52,7 @@ class LoginOperation: Operation {
             return
         }
         
+        // Make it fail 50% of time
         let randomFailure = Int.random(in: 0 ..< 10)
         var requestStatus = RequestStatus.success
         var error: NSError?
@@ -87,7 +88,7 @@ class RefreshTweetsOperation: Operation {
         }
         
         // Add some random latency
-        let randomLatency = Int.random(in: 0 ..< 3)
+        let randomLatency = Int.random(in: 1 ..< 3)
         Thread.sleep(forTimeInterval: TimeInterval(randomLatency))
         
         if isCancelled {
@@ -149,7 +150,7 @@ class PostTweetOperation: Operation {
         }
         
         // Add some random latency
-        let randomLatency = Int.random(in: 0 ..< 3)
+        let randomLatency = Int.random(in: 1 ..< 3)
         Thread.sleep(forTimeInterval: TimeInterval(randomLatency))
         
         if isCancelled {

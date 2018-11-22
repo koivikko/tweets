@@ -36,19 +36,20 @@ class TweetComposeViewController: UIViewController {
         if tweetMessage.text.count <= 0 {
             // Cannot post an empty tweet
             // Display an error
+            self.showAlert(message: "Message cannot be empty.")
         } else {
+            showLoadingView()
             let tweetManager = TweetManager.sharedInstance
-            let success = tweetManager.postTweet(account: account!, message: tweetMessage.text) {(requestStatus, error) in
-                DispatchQueue.main.async {                    
+            tweetManager.postTweet(account: account!, message: tweetMessage.text) {(requestStatus, error) in
+                DispatchQueue.main.async {
+                    self.dismissLoadingView()
                     if requestStatus == .success {
                         self.navigationController?.popViewController(animated: true)
                     } else {
                         // Show an error
+                        self.showNetworkError(error: error)
                     }
                 }
-            }
-            if !success {
-                print("Error when posting a tweet")
             }
         }
     }

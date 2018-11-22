@@ -28,7 +28,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc private func handleRefresh(_ refreshControl: UIRefreshControl) {
-        
+        refreshTweetsList()
     }
     
     func refreshTweetsList() {

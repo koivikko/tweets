@@ -12,7 +12,10 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidLoad()
-                
+        
+        // In this exercise, this main view controller is responsible for displaying login screen or the tweets list based on the account status
+        // For now, this works well since the app only has those two main states: not logged in or logged in
+        // In practice, this won't produce a smooth experience and some other navigation approach might work better
         let accountManager = AccountManager.sharedInstance
         if let currentAccount = accountManager.currentAccount() {
             // Show tweets list
@@ -21,8 +24,7 @@ class ViewController: UIViewController {
         } else {
             // Ask for username and password
             let loginViewController = LoginViewController(account: nil, nibName: "LoginView", bundle: Bundle.main)
-            self.navigationController?.pushViewController(loginViewController, animated: true)
-            
+            self.navigationController?.pushViewController(loginViewController, animated: true)            
         }
     }
 
