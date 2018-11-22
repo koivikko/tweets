@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 enum RequestStatus: Int {
     case success
     case failed
@@ -28,7 +29,7 @@ class LoginOperation: Operation {
     let username: String
     let password: String
     
-    var onComplete: (_ loginStatus: RequestStatus, _ error: NSError?) -> Void
+    let onComplete: (_ loginStatus: RequestStatus, _ error: NSError?) -> Void
     
     init(username: String, password: String, onComplete: @escaping (_ loginStatus: RequestStatus, _ error: NSError?) -> Void) {
         self.onComplete = onComplete
@@ -41,6 +42,8 @@ class LoginOperation: Operation {
             onComplete(RequestStatus.canceled, nil)
             return
         }
+        
+        // Add some random latency
         let randomLatency = Int.random(in: 0 ..< 3)
         Thread.sleep(forTimeInterval: TimeInterval(randomLatency))
         
@@ -62,9 +65,7 @@ class LoginOperation: Operation {
             requestStatus = RequestStatus.success
         }
         
-        
         onComplete(requestStatus, error)
-        
     }
 }
 
@@ -72,7 +73,7 @@ class RefreshTweetsOperation: Operation {
     
     let account: Account
     
-    var onComplete: (_ loginStatus: RequestStatus, _ error: NSError?, _ tweets: Array<Tweet>?) -> Void
+    let onComplete: (_ loginStatus: RequestStatus, _ error: NSError?, _ tweets: Array<Tweet>?) -> Void
     
     init(account: Account, onComplete: @escaping (_ loginStatus: RequestStatus, _ error: NSError?, _ tweets: Array<Tweet>?) -> Void) {
         self.account = account
@@ -80,12 +81,12 @@ class RefreshTweetsOperation: Operation {
     }
     
     override func main() {
-        print("Starting to refresh tweets")
         if isCancelled {
             onComplete(RequestStatus.canceled, nil, nil)
             return
         }
         
+        // Add some random latency
         let randomLatency = Int.random(in: 0 ..< 3)
         Thread.sleep(forTimeInterval: TimeInterval(randomLatency))
         
@@ -113,13 +114,13 @@ class RefreshTweetsOperation: Operation {
             let random = Int.random(in: 0 ..< 10)
             if (random % 2 == 0) {
                 // Add a random tweet
-                let randomTweets = ["First", "Second", "Third", "Fourth", "Fifth"]
+                let randomTweets = ["Tweet about the state of affairs.", "Retweeting something.", "Tweet for advertising my new book.", "Tweeting about some great announcements.", "Commenting some recent news."]
                 let randomUsers = ["Ellen", "Barack", "Donald", "Justin", "Katy"]
                 let tweet = Tweet(uuid: UUID().uuidString, originatingDisplayname: randomUsers[Int.random(in: 0 ..< 5)], tweetMessage: randomTweets[Int.random(in: 0 ..< 5)], timeStamp: NSDate().timeIntervalSince1970)
                 if tweets == nil {
                     tweets = Array<Tweet>()
                 }
-                tweets?.insert(tweet, at: 0)
+                tweets!.insert(tweet, at: 0)
             }
         }
     
@@ -132,7 +133,7 @@ class PostTweetOperation: Operation {
     let account: Account
     let tweet: Tweet
     
-    var onComplete: (_ loginStatus: RequestStatus, _ error: NSError?) -> Void
+    let onComplete: (_ loginStatus: RequestStatus, _ error: NSError?) -> Void
     
     init(account: Account, tweet: Tweet, onComplete: @escaping (_ loginStatus: RequestStatus, _ error: NSError?) -> Void) {
         self.account = account
@@ -147,6 +148,7 @@ class PostTweetOperation: Operation {
             return
         }
         
+        // Add some random latency
         let randomLatency = Int.random(in: 0 ..< 3)
         Thread.sleep(forTimeInterval: TimeInterval(randomLatency))
         

@@ -48,6 +48,15 @@
 		125E83E021A5E70100C28B26 /* TweetComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83DF21A5E70100C28B26 /* TweetComposeViewController.swift */; };
 		125E83E121A5E70100C28B26 /* TweetComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83DF21A5E70100C28B26 /* TweetComposeViewController.swift */; };
 		125E83E221A5E70100C28B26 /* TweetComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83DF21A5E70100C28B26 /* TweetComposeViewController.swift */; };
+		125E83E421A6F04600C28B26 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 125E83E321A6F04600C28B26 /* LoadingView.xib */; };
+		125E83E521A6F04600C28B26 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 125E83E321A6F04600C28B26 /* LoadingView.xib */; };
+		125E83E621A6F04600C28B26 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 125E83E321A6F04600C28B26 /* LoadingView.xib */; };
+		125E83E821A6F0ED00C28B26 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83E721A6F0ED00C28B26 /* LoadingViewController.swift */; };
+		125E83E921A6F0ED00C28B26 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83E721A6F0ED00C28B26 /* LoadingViewController.swift */; };
+		125E83EA21A6F0ED00C28B26 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83E721A6F0ED00C28B26 /* LoadingViewController.swift */; };
+		125E83EC21A6F8B700C28B26 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83EB21A6F8B700C28B26 /* UIViewController.swift */; };
+		125E83ED21A6F8B700C28B26 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83EB21A6F8B700C28B26 /* UIViewController.swift */; };
+		125E83EE21A6F8B700C28B26 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83EB21A6F8B700C28B26 /* UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +102,9 @@
 		125E83D721A5006100C28B26 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		125E83DB21A5E6F100C28B26 /* TweetComposeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetComposeView.xib; sourceTree = "<group>"; };
 		125E83DF21A5E70100C28B26 /* TweetComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetComposeViewController.swift; sourceTree = "<group>"; };
+		125E83E321A6F04600C28B26 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		125E83E721A6F0ED00C28B26 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		125E83EB21A6F8B700C28B26 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +155,7 @@
 		125E837B21A32AC400C28B26 /* TwitterApp */ = {
 			isa = PBXGroup;
 			children = (
-				125E83AD21A32B2A00C28B26 /* Platform */,
+				125E83AD21A32B2A00C28B26 /* Extensions */,
 				125E83AC21A32B1800C28B26 /* Networking */,
 				125E83AB21A32B0700C28B26 /* Model */,
 				125E83AA21A32AFD00C28B26 /* View Controllers */,
@@ -186,6 +198,8 @@
 				125E83D021A4B27100C28B26 /* TweetTableViewCell.xib */,
 				125E83DF21A5E70100C28B26 /* TweetComposeViewController.swift */,
 				125E83DB21A5E6F100C28B26 /* TweetComposeView.xib */,
+				125E83E721A6F0ED00C28B26 /* LoadingViewController.swift */,
+				125E83E321A6F04600C28B26 /* LoadingView.xib */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -207,12 +221,13 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		125E83AD21A32B2A00C28B26 /* Platform */ = {
+		125E83AD21A32B2A00C28B26 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				125E83D721A5006100C28B26 /* FileManager.swift */,
+				125E83EB21A6F8B700C28B26 /* UIViewController.swift */,
 			);
-			path = Platform;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				125E83C821A4A93300C28B26 /* TweetsView.xib in Resources */,
+				125E83E421A6F04600C28B26 /* LoadingView.xib in Resources */,
 				125E83D421A4B27100C28B26 /* TweetTableViewCell.xib in Resources */,
 				125E838721A32AC800C28B26 /* LaunchScreen.storyboard in Resources */,
 				125E838421A32AC800C28B26 /* Assets.xcassets in Resources */,
@@ -334,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				125E83C921A4A93300C28B26 /* TweetsView.xib in Resources */,
+				125E83E521A6F04600C28B26 /* LoadingView.xib in Resources */,
 				125E83DD21A5E6F200C28B26 /* TweetComposeView.xib in Resources */,
 				125E83D521A4B27100C28B26 /* TweetTableViewCell.xib in Resources */,
 			);
@@ -347,6 +364,7 @@
 				125E83D621A4B27100C28B26 /* TweetTableViewCell.xib in Resources */,
 				125E83DE21A5E6F200C28B26 /* TweetComposeView.xib in Resources */,
 				125E83B621A333B600C28B26 /* LoginView.xib in Resources */,
+				125E83E621A6F04600C28B26 /* LoadingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,12 +377,14 @@
 			files = (
 				125E83B221A32B7D00C28B26 /* LoginViewController.swift in Sources */,
 				125E83C421A4A12A00C28B26 /* TweetManager.swift in Sources */,
+				125E83EC21A6F8B700C28B26 /* UIViewController.swift in Sources */,
 				125E83D121A4B27100C28B26 /* TweetTableViewCell.swift in Sources */,
 				125E837F21A32AC400C28B26 /* ViewController.swift in Sources */,
 				125E83D821A5006100C28B26 /* FileManager.swift in Sources */,
 				125E837D21A32AC400C28B26 /* AppDelegate.swift in Sources */,
 				125E83CC21A4AB3000C28B26 /* TweetsViewController.swift in Sources */,
 				125E83B821A3344300C28B26 /* AccountManager.swift in Sources */,
+				125E83E821A6F0ED00C28B26 /* LoadingViewController.swift in Sources */,
 				125E83E021A5E70100C28B26 /* TweetComposeViewController.swift in Sources */,
 				125E83C021A4418900C28B26 /* TweetRESTApi.swift in Sources */,
 			);
@@ -378,7 +398,9 @@
 				125E83C521A4A12A00C28B26 /* TweetManager.swift in Sources */,
 				125E83C121A4418900C28B26 /* TweetRESTApi.swift in Sources */,
 				125E839221A32AC900C28B26 /* TwitterAppTests.swift in Sources */,
+				125E83ED21A6F8B700C28B26 /* UIViewController.swift in Sources */,
 				125E83B921A3344300C28B26 /* AccountManager.swift in Sources */,
+				125E83E921A6F0ED00C28B26 /* LoadingViewController.swift in Sources */,
 				125E83D221A4B27100C28B26 /* TweetTableViewCell.swift in Sources */,
 				125E83E121A5E70100C28B26 /* TweetComposeViewController.swift in Sources */,
 				125E83D921A5006100C28B26 /* FileManager.swift in Sources */,
@@ -392,10 +414,12 @@
 				125E83B321A32B7D00C28B26 /* LoginViewController.swift in Sources */,
 				125E83C221A4418900C28B26 /* TweetRESTApi.swift in Sources */,
 				125E83CE21A4AB3000C28B26 /* TweetsViewController.swift in Sources */,
+				125E83EE21A6F8B700C28B26 /* UIViewController.swift in Sources */,
 				125E839D21A32AC900C28B26 /* TwitterAppUITests.swift in Sources */,
 				125E83E221A5E70100C28B26 /* TweetComposeViewController.swift in Sources */,
 				125E83BA21A3344300C28B26 /* AccountManager.swift in Sources */,
 				125E83DA21A5006100C28B26 /* FileManager.swift in Sources */,
+				125E83EA21A6F0ED00C28B26 /* LoadingViewController.swift in Sources */,
 				125E83C621A4A12A00C28B26 /* TweetManager.swift in Sources */,
 				125E83D321A4B27100C28B26 /* TweetTableViewCell.swift in Sources */,
 			);

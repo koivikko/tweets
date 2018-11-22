@@ -30,6 +30,7 @@ class TweetManager {
     
     func refreshTweetsList(account: Account, onComplete: @escaping (_ loginStatus: RequestStatus, _ error: NSError?) -> Void) -> Bool {
         // launch a refresh request
+        // This method should only poll since the last time tweets were fetched.
         let restApi = TweetRESTApi.sharedInstance
         restApi.refreshTweets(account: account) {(requestStatus, error, tweets) in
             if requestStatus == RequestStatus.success {
@@ -106,4 +107,5 @@ class TweetManager {
             print(error)
         }
     }
+    
 }

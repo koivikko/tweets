@@ -39,19 +39,24 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginTapped(_ sender: Any) {
         if let username = self.usernameField.text, let password = self.passwordField.text {
+            
+            showLoadingView()
+            
             let accountManager = AccountManager.sharedInstance
             accountManager.login(username: username, password: password) {(requestStatus, error) in
                 
                 // Since login is an asynchronous operation, make sure we handle results in the main thread
                 DispatchQueue.main.async {
-                    if requestStatus == RequestStatus.success {
-                        print("Login successful")
+                    
+                    self.dismissLoadingView()
+                    
+                    if requestStatus == .success {
                         let currentAccount = accountManager.currentAccount()
                         let tweetsViewController = TweetsViewController(account: currentAccount, nibName: "TweetsView", bundle: Bundle.main)
                         self.navigationController?.pushViewController(tweetsViewController, animated: true)
-
                     } else {
                         // Display login error
+                        self.showNetworkError(error: error)
                     }
                 }
             }

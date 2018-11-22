@@ -28,21 +28,28 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc private func handleRefresh(_ refreshControl: UIRefreshControl) {
+        
+    }
+    
+    func refreshTweetsList() {
         let tweetManager = TweetManager.sharedInstance
+        self.tableView.refreshControl?.beginRefreshing()
         if !tweetManager.refreshTweetsList(account: account!) {(requestStatus, error) in
-                DispatchQueue.main.async {
-                    if requestStatus == RequestStatus.success {
-                        let tweetManager = TweetManager.sharedInstance
-                        self.tweets = tweetManager.getTweets(account: self.account!)
-                        self.tableView.reloadData()
-                    } else {
-                        print(error)
-                    }
+            DispatchQueue.main.async {
+                self.tableView.refreshControl?.endRefreshing()
+                if requestStatus == .success {
+                    let tweetManager = TweetManager.sharedInstance
+                    self.tweets = tweetManager.getTweets(account: self.account!)
+                    self.tableView.reloadData()
+                } else {
+                    // Display error
+                    self.showNetworkError(error: error)
                 }
+            }
             } {
+            // For now this shouldn't happen ever..
             print("Could not refresh tweets")
         }
-        refreshControl.endRefreshing()
     }
     
     override func viewDidLoad() {
@@ -61,19 +68,11 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
         if (account != nil) {
-            let tweetManager = TweetManager.sharedInstance
-            if !tweetManager.refreshTweetsList(account: account!) {(requestStatus, error) in
-                    DispatchQueue.main.async {
-                        if requestStatus == RequestStatus.success {
-                            let tweetManager = TweetManager.sharedInstance
-                            self.tweets = tweetManager.getTweets(account: self.account!)
-                            self.tableView.reloadData()
-                        }
-                    }
-                } {
-                print("Could not refresh tweets")
-            }
+            // Always check for new tweets
+            refreshTweetsList()
             
+            // Reload local tweets as well
+            let tweetManager = TweetManager.sharedInstance
             tweets = tweetManager.getTweets(account: account!)
             self.tableView.reloadData()
         }
