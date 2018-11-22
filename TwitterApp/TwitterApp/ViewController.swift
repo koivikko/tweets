@@ -10,16 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidLoad()
-        
+                
         let accountManager = AccountManager.sharedInstance
         if let currentAccount = accountManager.currentAccount() {
-            if (accountManager.isLoggedIn(account: currentAccount)) {
-                // Show tweets list
-            } else {
-                // Ask for the password
-            }
+            // Show tweets list
+            let tweetsViewController = TweetsViewController(account: currentAccount, nibName: "TweetsView", bundle: Bundle.main)
+            self.navigationController?.pushViewController(tweetsViewController, animated: true)
         } else {
             // Ask for username and password
             let loginViewController = LoginViewController(account: nil, nibName: "LoginView", bundle: Bundle.main)

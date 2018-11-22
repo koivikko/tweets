@@ -19,8 +19,9 @@ class LoginViewController: UIViewController {
     init(account: Account?, nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.account = account
         if account != nil {
-            // Don't allow switching accounts
+            // Login view was displayed with a previous account, don't allow switching accounts by locking username field
             usernameField.isUserInteractionEnabled = false
+            usernameField.text = account?.username
         }
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -32,7 +33,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        usernameField?.text = "heikki"
+        // No option to go back from login screen for now
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     @IBAction func loginTapped(_ sender: Any) {
@@ -44,7 +46,10 @@ class LoginViewController: UIViewController {
                 DispatchQueue.main.async {
                     if requestStatus == RequestStatus.success {
                         print("Login successful")
-                        self.navigationController?.popViewController(animated: true)
+                        let currentAccount = accountManager.currentAccount()
+                        let tweetsViewController = TweetsViewController(account: currentAccount, nibName: "TweetsView", bundle: Bundle.main)
+                        self.navigationController?.pushViewController(tweetsViewController, animated: true)
+
                     } else {
                         // Display login error
                     }
