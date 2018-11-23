@@ -22,9 +22,23 @@ class AccountManager {
     static let accountManagerLoginErrorDomain = "AccountManagerLoginErrorDomain"
     static let filePath = FileManager.documentsDir() + "/Account.txt"
     
-    static let sharedInstance = AccountManager()
+    private static var _shared: AccountManager?
     
-    private init() {
+    let restApi: RESTApiProtocol!
+    
+    private init(restApi: RESTApiProtocol) {
+        self.restApi = restApi
+    }
+    
+    static func initialize(restApi: RESTApiProtocol) {
+        _shared = AccountManager(restApi: restApi)
+    }
+    
+    static func sharedInstance() -> AccountManager {
+        if _shared == nil {
+            print("Calling sharedInstance before initializing AccountManager")
+        }
+        return _shared!
     }
     
     func currentAccount() -> Account? {
@@ -32,7 +46,6 @@ class AccountManager {
     }
     
     func login(username: String, password: String, onComplete: @escaping (_ loginStatus: RequestStatus, _ error: NSError?) -> Void) {
-        let restApi = TweetRESTApi.sharedInstance
         restApi.loginWith(username: username, password: password) {loginStatus, error in
             if loginStatus == RequestStatus.success {
                 // Store the account
@@ -49,7 +62,7 @@ class AccountManager {
     
     func logout(account: Account) {
         deleteAccount()
-        let tweetManager = TweetManager.sharedInstance
+        let tweetManager = TweetManager.sharedInstance()
         tweetManager.deleteTweets()
     }
     

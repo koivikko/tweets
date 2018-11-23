@@ -39,15 +39,15 @@ class TweetComposeViewController: UIViewController {
             self.showAlert(message: "Message cannot be empty.")
         } else {
             showLoadingView()
-            let tweetManager = TweetManager.sharedInstance
-            tweetManager.postTweet(account: account!, message: tweetMessage.text) {(requestStatus, error) in
+            let tweetManager = TweetManager.sharedInstance()
+            tweetManager.postTweet(account: account!, message: tweetMessage.text) {[weak self] (requestStatus, error) in
                 DispatchQueue.main.async {
-                    self.dismissLoadingView()
+                    self?.dismissLoadingView()
                     if requestStatus == .success {
-                        self.navigationController?.popViewController(animated: true)
+                        self?.navigationController?.popViewController(animated: true)
                     } else {
                         // Show an error
-                        self.showNetworkError(error: error)
+                        self?.showNetworkError(error: error)
                     }
                 }
             }

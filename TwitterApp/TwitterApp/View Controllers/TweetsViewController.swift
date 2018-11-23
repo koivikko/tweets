@@ -32,18 +32,18 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func refreshTweetsList() {
-        let tweetManager = TweetManager.sharedInstance
+        let tweetManager = TweetManager.sharedInstance()
         self.tableView.refreshControl?.beginRefreshing()
-        if !tweetManager.refreshTweetsList(account: account!) {(requestStatus, error) in
+        if !tweetManager.refreshTweetsList(account: account!) {[weak self] (requestStatus, error) in
             DispatchQueue.main.async {
-                self.tableView.refreshControl?.endRefreshing()
-                if requestStatus == .success {
-                    let tweetManager = TweetManager.sharedInstance
-                    self.tweets = tweetManager.getTweets(account: self.account!)
-                    self.tableView.reloadData()
+                self?.tableView.refreshControl?.endRefreshing()
+                if requestStatus == .success && self != nil {
+                    let tweetManager = TweetManager.sharedInstance()
+                    self!.tweets = tweetManager.getTweets(account: self!.account!)
+                    self!.tableView.reloadData()
                 } else {
                     // Display error
-                    self.showNetworkError(error: error)
+                    self?.showNetworkError(error: error)
                 }
             }
             } {
@@ -72,7 +72,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             refreshTweetsList()
             
             // Reload local tweets as well
-            let tweetManager = TweetManager.sharedInstance
+            let tweetManager = TweetManager.sharedInstance()
             tweets = tweetManager.getTweets(account: account!)
             self.tableView.reloadData()
         }
@@ -117,7 +117,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func logoutTapped(_ sender: Any) {
         if account != nil {
-            let accountManager = AccountManager.sharedInstance
+            let accountManager = AccountManager.sharedInstance()
             accountManager.logout(account: account!)
         }
         self.navigationController?.popViewController(animated: true)

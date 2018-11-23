@@ -37,6 +37,7 @@
                 </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <accessibility key="accessibilityConfiguration" identifier="loadingView"/>
             <constraints>
                 <constraint firstItem="PMh-Gc-qKQ" firstAttribute="centerY" secondItem="XdR-AK-6sd" secondAttribute="centerY" id="Baq-lC-Adh"/>
                 <constraint firstItem="PMh-Gc-qKQ" firstAttribute="centerX" secondItem="XdR-AK-6sd" secondAttribute="centerX" id="NRo-Zp-J4y"/>

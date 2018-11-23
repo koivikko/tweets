@@ -19,9 +19,26 @@ struct Tweet: Codable {
 
 class TweetManager {
     
-    static let sharedInstance = TweetManager()
-    
     private static let filePath = FileManager.documentsDir() + "tweets.txt"
+    
+    private static var _shared: TweetManager?
+    let restApi: RESTApiProtocol!
+    
+    
+    private init(restApi: RESTApiProtocol) {
+        self.restApi = restApi
+    }
+    
+    static func initialize(restApi: RESTApiProtocol) {
+        _shared = TweetManager(restApi: restApi)
+    }
+    
+    static func sharedInstance() -> TweetManager {
+        if _shared == nil {
+            print("Calling sharedInstance() before initializing TweetManager")
+        }
+        return _shared!
+    }
     
     func getTweets(account: Account) -> Array<Tweet>? {
         // return local tweets
@@ -29,13 +46,13 @@ class TweetManager {
     }
     
     func refreshTweetsList(account: Account, onComplete: @escaping (_ loginStatus: RequestStatus, _ error: NSError?) -> Void) -> Bool {
-        // launch a refresh request
+        // Launch a refresh request
         // This method should only poll since the last time tweets were fetched.
-        let restApi = TweetRESTApi.sharedInstance
-        restApi.refreshTweets(account: account) {(requestStatus, error, tweets) in
+        // For now assume unlimited resources and refresh the list always..        
+        restApi.refreshTweets(account: account) {[weak self] (requestStatus, error, tweets) in
             if requestStatus == RequestStatus.success {
                 if (tweets != nil) {
-                    self.saveTweets(tweets: tweets!)
+                    self?.saveTweets(tweets: tweets!)
                 }
                 // Notify UI
                 onComplete(requestStatus, error)
@@ -47,28 +64,26 @@ class TweetManager {
         return true
     }
     
-    func postTweet(account: Account, message: String, onComplete: @escaping (_ loginStatus: RequestStatus, _ error: NSError?) -> Void) -> Bool {
+    func postTweet(account: Account, message: String, onComplete: @escaping (_ loginStatus: RequestStatus, _ error: NSError?) -> Void) {
         
         // Create a tweet object
         let tweet = Tweet(uuid: UUID().uuidString, originatingDisplayname: account.username, tweetMessage: message, timeStamp: Date().timeIntervalSince1970)
         
         // launch a refresh request
-        let restApi = TweetRESTApi.sharedInstance
-        restApi.postTweet(account: account, tweet: tweet) {(requestStatus, error) in
+        restApi.postTweet(account: account, tweet: tweet) {[weak self] (requestStatus, error) in
             if requestStatus == RequestStatus.success {
                 // Faking the network roundtrip by adding this tweet to stored tweets
-                var tweets = self.loadTweets()
+                var tweets = self?.loadTweets()
                 if tweets == nil {
                     tweets = Array<Tweet>()
                 }
                 tweets!.insert(tweet, at: 0)
-                self.saveTweets(tweets: tweets!)
+                self?.saveTweets(tweets: tweets!)
                 onComplete(requestStatus, error)
             } else {
                 onComplete(requestStatus, error)
             }
         }
-        return true
     }
     
     

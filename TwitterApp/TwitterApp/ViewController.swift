@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         // In this exercise, this main view controller is responsible for displaying login screen or the tweets list based on the account status
         // For now, this works well since the app only has those two main states: not logged in or logged in
         // In practice, this won't produce a smooth experience and some other navigation approach might work better
-        let accountManager = AccountManager.sharedInstance
+        let accountManager = AccountManager.sharedInstance()
         if let currentAccount = accountManager.currentAccount() {
             // Show tweets list
             let tweetsViewController = TweetsViewController(account: currentAccount, nibName: "TweetsView", bundle: Bundle.main)

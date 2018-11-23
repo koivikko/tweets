@@ -16,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        let restApi = TweetRESTApi()
+        AccountManager.initialize(restApi: restApi)
+        TweetManager.initialize(restApi: restApi)
+        
         return true
     }
 

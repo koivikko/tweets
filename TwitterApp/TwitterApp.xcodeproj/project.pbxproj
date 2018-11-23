@@ -57,6 +57,10 @@
 		125E83EC21A6F8B700C28B26 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83EB21A6F8B700C28B26 /* UIViewController.swift */; };
 		125E83ED21A6F8B700C28B26 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83EB21A6F8B700C28B26 /* UIViewController.swift */; };
 		125E83EE21A6F8B700C28B26 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83EB21A6F8B700C28B26 /* UIViewController.swift */; };
+		125E83F021A71F2F00C28B26 /* NetworkOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83EF21A71F2F00C28B26 /* NetworkOperations.swift */; };
+		125E83F121A71F2F00C28B26 /* NetworkOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83EF21A71F2F00C28B26 /* NetworkOperations.swift */; };
+		125E83F221A71F2F00C28B26 /* NetworkOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83EF21A71F2F00C28B26 /* NetworkOperations.swift */; };
+		125E83F421A7291400C28B26 /* XCUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125E83F321A7291400C28B26 /* XCUIApplication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +109,8 @@
 		125E83E321A6F04600C28B26 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		125E83E721A6F0ED00C28B26 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		125E83EB21A6F8B700C28B26 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		125E83EF21A71F2F00C28B26 /* NetworkOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkOperations.swift; sourceTree = "<group>"; };
+		125E83F321A7291400C28B26 /* XCUIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIApplication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,7 @@
 			children = (
 				125E839C21A32AC900C28B26 /* TwitterAppUITests.swift */,
 				125E839E21A32AC900C28B26 /* Info.plist */,
+				125E83F321A7291400C28B26 /* XCUIApplication.swift */,
 			);
 			path = TwitterAppUITests;
 			sourceTree = "<group>";
@@ -217,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				125E83BF21A4418900C28B26 /* TweetRESTApi.swift */,
+				125E83EF21A71F2F00C28B26 /* NetworkOperations.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -375,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				125E83F021A71F2F00C28B26 /* NetworkOperations.swift in Sources */,
 				125E83B221A32B7D00C28B26 /* LoginViewController.swift in Sources */,
 				125E83C421A4A12A00C28B26 /* TweetManager.swift in Sources */,
 				125E83EC21A6F8B700C28B26 /* UIViewController.swift in Sources */,
@@ -394,6 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				125E83F121A71F2F00C28B26 /* NetworkOperations.swift in Sources */,
 				125E83CD21A4AB3000C28B26 /* TweetsViewController.swift in Sources */,
 				125E83C521A4A12A00C28B26 /* TweetManager.swift in Sources */,
 				125E83C121A4418900C28B26 /* TweetRESTApi.swift in Sources */,
@@ -415,11 +425,13 @@
 				125E83C221A4418900C28B26 /* TweetRESTApi.swift in Sources */,
 				125E83CE21A4AB3000C28B26 /* TweetsViewController.swift in Sources */,
 				125E83EE21A6F8B700C28B26 /* UIViewController.swift in Sources */,
+				125E83F221A71F2F00C28B26 /* NetworkOperations.swift in Sources */,
 				125E839D21A32AC900C28B26 /* TwitterAppUITests.swift in Sources */,
 				125E83E221A5E70100C28B26 /* TweetComposeViewController.swift in Sources */,
 				125E83BA21A3344300C28B26 /* AccountManager.swift in Sources */,
 				125E83DA21A5006100C28B26 /* FileManager.swift in Sources */,
 				125E83EA21A6F0ED00C28B26 /* LoadingViewController.swift in Sources */,
+				125E83F421A7291400C28B26 /* XCUIApplication.swift in Sources */,
 				125E83C621A4A12A00C28B26 /* TweetManager.swift in Sources */,
 				125E83D321A4B27100C28B26 /* TweetTableViewCell.swift in Sources */,
 			);
