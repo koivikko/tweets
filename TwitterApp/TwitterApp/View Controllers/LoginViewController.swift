@@ -39,6 +39,10 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginTapped(_ sender: Any) {
         if let username = self.usernameField.text, let password = self.passwordField.text {
+            if username.count <= 0 || password.count <= 0 {
+                self.showAlert(message: "Username or password cannot be empty")
+                return
+            }
             
             showLoadingView()
             
