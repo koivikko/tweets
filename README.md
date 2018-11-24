@@ -20,7 +20,7 @@ Features:
 **Known issues & design decisions**
 - While the app has some primitive error handling to illustrate network errors, it does not cover all scenarios by no means (such as network errors while navigating back and forth in the app)
 - UI is very rough and serves only the purpose to illustrate app navigation on purpose
-
+- App has been tested with iPhone XR simulator in portrait mode only. There may easily be issues with landscape mode and keyboard covering UI componens on smaller screen sizes.
 
 
 ## App architecture
