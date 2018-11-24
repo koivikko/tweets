@@ -49,7 +49,8 @@ Since the point of this app was not to connect to real twitter service, the app 
 
 - TweetRESTApi publishes all the required network operations for the data model. Operations will take a closure as a parameter for returning asynchronous request results. 
 	- It is important to note that this app does not handle account authentication in any proper manner. In a real production applications, typical issue would be around invalid / experied user credentials and handling those error scenarios in a user friendly manner would need some additional work (Imagine an app that has queued several network requests and user's password got changed..)
-
+- NetworkOperations contains all asynchronous fake network operations
+	- This would be replaced by a 3rd party networking framework or urlsession, depending on the networking needs of the app
 
 ## Testing
 This project contains few unit tests and UI tests to illustrate how such app would be testable. 

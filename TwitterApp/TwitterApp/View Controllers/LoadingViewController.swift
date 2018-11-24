@@ -25,4 +25,5 @@ class LoadingViewController: UIViewController {
         contentView.layer.cornerRadius = 5;
         contentView.layer.masksToBounds = true;
     }
+    
 }

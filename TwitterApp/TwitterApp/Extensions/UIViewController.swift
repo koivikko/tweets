@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-
+// Utility methods for displaying loading screens and alerts
 extension UIViewController {
     
     func showLoadingView() {

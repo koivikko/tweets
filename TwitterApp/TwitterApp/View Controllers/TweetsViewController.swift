@@ -47,8 +47,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
             } {
-            // For now this shouldn't happen ever..
-            print("Could not refresh tweets")
+                // For now this shouldn't happen ever..
+                print("Could not refresh tweets")
         }
     }
     
@@ -68,15 +68,18 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
         if (account != nil) {
-            // Always check for new tweets
+            // Always check for new tweets when the view is shown
             refreshTweetsList()
             
-            // Reload local tweets as well
+            // Reload local tweets as well to ensure list is always upto date
+            // NOTE: This could be optimized to only append all new tweets..
             let tweetManager = TweetManager.sharedInstance()
             tweets = tweetManager.getTweets(account: account!)
             self.tableView.reloadData()
         }
     }
+    
+    // MARK: Table view methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets?.count ?? 0
@@ -110,6 +113,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
+    
+    // MARK: IBActions
     @IBAction func composeTapped(_ sender: Any) {
         let tweetComposeViewController = TweetComposeViewController(account: account, nibName: "TweetComposeView", bundle: Bundle.main)
         self.navigationController?.pushViewController(tweetComposeViewController, animated: true)

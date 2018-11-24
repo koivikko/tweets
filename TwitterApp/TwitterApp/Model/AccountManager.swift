@@ -41,6 +41,7 @@ class AccountManager {
         return _shared!
     }
     
+    // Returns the current account
     func currentAccount() -> Account? {
         return loadAccount()
     }
@@ -66,15 +67,14 @@ class AccountManager {
         tweetManager.deleteTweets()
     }
     
+    // MARK: private methods
     private func saveAccount(account: Account) {
-        
         do {
             let jsonData = try JSONEncoder().encode(account)
             try jsonData.write(to: URL(fileURLWithPath: AccountManager.filePath))
         } catch {
             print(error)
         }
-    
     }
     
     private func loadAccount() -> Account? {

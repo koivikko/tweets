@@ -5,6 +5,8 @@
 //  Created by Heikki on 2018-11-22.
 //  Copyright © 2018 Heikki. All rights reserved.
 //
+// This class includes all fake network operations to illustrate asynchronous nature of REST api calls
+//
 
 import Foundation
 

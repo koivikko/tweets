@@ -32,6 +32,8 @@ class TweetComposeViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    // MARK: IBActions
+    
     @IBAction func tweetButtonTapped(_ sender: Any) {
         if tweetMessage.text.count <= 0 {
             // Cannot post an empty tweet

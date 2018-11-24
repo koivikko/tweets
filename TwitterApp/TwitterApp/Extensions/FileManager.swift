@@ -9,13 +9,11 @@
 import Foundation
 
 extension FileManager {
+    
+    // Helper method for accessing app's documents folder
     class func documentsDir() -> String {
         var paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as [String]
         return paths[0]
     }
     
-    class func cachesDir() -> String {
-        var paths = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true) as [String]
-        return paths[0]
-    }
 }

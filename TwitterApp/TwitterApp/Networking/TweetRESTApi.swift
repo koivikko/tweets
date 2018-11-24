@@ -8,13 +8,14 @@
 
 import Foundation
 
-
+// Generic request status codes to be returned to the callers
 enum RequestStatus: Int {
     case success
     case failed
     case canceled
 }
 
+// Sample network error codes
 enum RequestErrorCode: Int {
     case noUsername
     case noPassword
@@ -23,8 +24,7 @@ enum RequestErrorCode: Int {
     case serverError
 }
 
-
-
+// REST api protocol to be used by the data model
 protocol RESTApiProtocol {
     func loginWith(username: String, password: String, onComplete: @escaping (_ loginStatus: RequestStatus, _ error: NSError?) -> Void)
     
@@ -33,7 +33,7 @@ protocol RESTApiProtocol {
     func postTweet(account: Account, tweet: Tweet, onComplete: @escaping (_ loginStatus: RequestStatus, _ error: NSError?) -> Void)
 }
 
-
+// Actual rest API implementation
 class TweetRESTApi: RESTApiProtocol {
     
     static let TweetRESTApiErrorDomain = "TweetRESTApiErrorDomain"

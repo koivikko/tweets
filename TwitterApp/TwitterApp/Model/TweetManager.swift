@@ -42,6 +42,7 @@ class TweetManager {
     
     func getTweets(account: Account) -> Array<Tweet>? {
         // return local tweets
+        // Note: The account is ignored for now but would need to be taken in to consideration in a real app
         return loadTweets()
     }
     
@@ -86,7 +87,21 @@ class TweetManager {
         }
     }
     
+    // Allows clearing the tweets from the storage.
+    // This would need to be hidden and done properly in a real app but is now exposed on purpose
+    func deleteTweets() {
+        let fileManager = FileManager.default
+        if !fileManager.fileExists(atPath: TweetManager.filePath) {
+            return
+        }
+        do {
+            try fileManager.removeItem(atPath: TweetManager.filePath)
+        } catch {
+            print(error)
+        }
+    }
     
+    // MAKR: private methods
     private func loadTweets() -> Array<Tweet>? {
         let fileManager = FileManager.default
         if !fileManager.fileExists(atPath: TweetManager.filePath) {
@@ -106,18 +121,6 @@ class TweetManager {
         do {
             let jsonData = try JSONEncoder().encode(tweets)
             try jsonData.write(to: URL(fileURLWithPath: TweetManager.filePath))
-        } catch {
-            print(error)
-        }
-    }
-    
-    func deleteTweets() {
-        let fileManager = FileManager.default
-        if !fileManager.fileExists(atPath: TweetManager.filePath) {
-            return
-        }
-        do {
-            try fileManager.removeItem(atPath: TweetManager.filePath)
         } catch {
             print(error)
         }
