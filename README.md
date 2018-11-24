@@ -17,6 +17,11 @@ Features:
 	- Posting a message may fail randomly as well with an appropriate error message
 	- For now, there is not upper bound to the message size
 
+**Known issues & design decisions**
+- While the app has some primitive error handling to illustrate network errors, it does not cover all scenarios by no means (such as network errors while navigating back and forth in the app)
+- UI is very rough and serves only the purpose to illustrate app navigation on purpose
+
+
 
 ## App architecture
 
