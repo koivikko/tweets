@@ -66,6 +66,8 @@ Since the app is built with object decoupling in mind, unit tests are fairly eas
 ### UI tests
 UI tests will only cover a single login & logout sequence to illustrate a simple feature test case. Most important aspect for the UI tests is to find a safe and robust assertion check and to leave the app in a clean state after each test case. 
 
+- Note that since the UI tests are being run in the app context, the application state may not be exactly what the tests are excpecting
+- In order for this test to pass, the app must be in logged out state. A real production app tests would need to have a helper method to cleanup the app state before the tests are started
 
 ## External dependencies
 Since this app is was relatively small, there are no external components for now. 
