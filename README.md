@@ -17,6 +17,11 @@ Features:
 	- Posting a message may fail randomly as well with an appropriate error message
 	- For now, there is not upper bound to the message size
 
+**Known issues & design decisions**
+- While the app has some primitive error handling to illustrate network errors, it does not cover all scenarios by no means (such as network errors while navigating back and forth in the app)
+- UI is very rough and serves only the purpose to illustrate app navigation on purpose
+- App has been tested with iPhone XR simulator in portrait mode only. There may easily be issues with landscape mode and keyboard covering UI componens on smaller screen sizes.
+
 
 ## App architecture
 
@@ -61,6 +66,8 @@ Since the app is built with object decoupling in mind, unit tests are fairly eas
 ### UI tests
 UI tests will only cover a single login & logout sequence to illustrate a simple feature test case. Most important aspect for the UI tests is to find a safe and robust assertion check and to leave the app in a clean state after each test case. 
 
+- Note that since the UI tests are being run in the app context, the application state may not be exactly what the tests are excpecting
+- In order for this test to pass, the app must be in logged out state. A real production app tests would need to have a helper method to cleanup the app state before the tests are started
 
 ## External dependencies
 Since this app is was relatively small, there are no external components for now. 
