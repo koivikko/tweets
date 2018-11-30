@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingViewController" customModule="TwitterApp" customModuleProvider="target">
             <connections>
+                <outlet property="activityView" destination="PMh-Gc-qKQ" id="rSX-qO-nun"/>
                 <outlet property="contentView" destination="XdR-AK-6sd" id="Xxm-xV-jhD"/>
                 <outlet property="view" destination="iN0-l3-epB" id="hfg-nc-Jla"/>
             </connections>

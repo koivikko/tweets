@@ -166,8 +166,6 @@
 				125E83AB21A32B0700C28B26 /* Model */,
 				125E83AA21A32AFD00C28B26 /* View Controllers */,
 				125E837C21A32AC400C28B26 /* AppDelegate.swift */,
-				125E837E21A32AC400C28B26 /* MainViewController.swift */,
-				125E838021A32AC400C28B26 /* Main.storyboard */,
 				125E838321A32AC800C28B26 /* Assets.xcassets */,
 				125E838521A32AC800C28B26 /* LaunchScreen.storyboard */,
 				125E838821A32AC800C28B26 /* Info.plist */,
@@ -197,6 +195,8 @@
 		125E83AA21A32AFD00C28B26 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				125E837E21A32AC400C28B26 /* MainViewController.swift */,
+				125E838021A32AC400C28B26 /* Main.storyboard */,
 				125E83B121A32B7D00C28B26 /* LoginViewController.swift */,
 				125E83B421A333B600C28B26 /* LoginView.xib */,
 				125E83CB21A4AB3000C28B26 /* TweetsViewController.swift */,

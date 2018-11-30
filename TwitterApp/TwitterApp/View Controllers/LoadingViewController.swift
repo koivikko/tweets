@@ -12,6 +12,7 @@ import UIKit
 class LoadingViewController: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -24,6 +25,14 @@ class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         contentView.layer.cornerRadius = 5;
         contentView.layer.masksToBounds = true;
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        activityView.startAnimating()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        activityView.stopAnimating()
     }
     
 }
