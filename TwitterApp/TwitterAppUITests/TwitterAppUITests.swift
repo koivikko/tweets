@@ -28,15 +28,20 @@ class TwitterAppUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    // A simple test case to illustrate a UI test
+    // Note: This test may fail if the app is not in logged out state. This could be fixed by having cleanup routines for the tests
     func testThatLoginLogoutWorks() {
-        // Use recording to get started writing UI tests.
+        if (!app.currentScreenIsLogin()) {
+            app.toolbars.buttons["logoutButton"].tap()
+        }
+        
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         XCTAssertTrue(app.currentScreenIsLogin())
         
         app.textFields["usernameField"].tap()
         app.textFields["usernameField"].typeText("UItestUser")
-        app.textFields["passwordField"].tap()
-        app.textFields["passwordField"].typeText("password")
+        app.secureTextFields["passwordField"].tap()
+        app.secureTextFields["passwordField"].typeText("password")
         
         app.buttons["loginButton"].tap()
         
